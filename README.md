@@ -1,1 +1,1 @@
-# umhackerthon
+# umhackathon
