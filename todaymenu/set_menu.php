@@ -49,7 +49,7 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-			<form action="/umhackathon/uploadmenu.php" method="POST" enctype="multipart/form-data">
+			<form action="uploadmenu.php" method="POST" enctype="multipart/form-data">
 				<input type="file" name="fileToUpload">
 				<br>
 				<br>
