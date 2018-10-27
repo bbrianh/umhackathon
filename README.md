@@ -3,6 +3,9 @@
 index file: 
 http://localhost/umhackathon/student_site/api_pc/index.html
 
+cafeteria site(menu setting UI):
+http://localhost/umhackathon/cafeteria_site/todaymenu/set_menu.php
+
 included libraries and tools:
 1. Bootstap
 https://getbootstrap.com/docs/4.1/examples/album/
