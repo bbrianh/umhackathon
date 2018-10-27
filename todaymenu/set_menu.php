@@ -100,7 +100,9 @@
 				if (menu!=null){
 					for (var i=0; i < menu.length; i++){
 						tbcontent += "<tr>";
-						tbcontent += "<td><button type='button' class='btn btn-link'>" + menu[i]["photo"] + "</button></td>";
+						//<a href='#' class='btn btn-link' role='button'>Link Button</a>
+						path="http://localhost/umhackathon/todaymenu/"+menu[i]["photo"];
+						tbcontent += "<td><a href="+path+" class='btn btn-link' role='button'>" + menu[i]["photo"] + "</a></td>";
 						tbcontent += "<td>"+menu[i]["name"]+"</td>";
 						tbcontent += "<td>"+menu[i]["ingredient"]+"</td>";
 						tbcontent += "</tr>";	
