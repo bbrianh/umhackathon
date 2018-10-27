@@ -79,37 +79,7 @@
     </div>
   </div>
   
-  <!-- The Modal2 -->
-  <div class="modal fade" id="myModal2">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Delete on menu</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-			<form action="*" method="POST" enctype="multipart/form-data">
-					<div class="form-group">
-					<label for="text">Delete No.:</label>
-					<input type="text" class="form-control" name="id">
-					</div>
-				
-				<button type="submit" class="btn btn-primary" onclick="refresh()">Submit</button>
-			</form>
-		
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="refresh()">Close</button>
-        </div>
-        
-      </div>
-    </div>
+  
   </div>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -148,8 +118,7 @@
 				table.innerHTML += tbcontent;
 				
 				var buttons = "<tr><td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>add</button>"
-				buttons += "<span>    </span>"
-				buttons += "<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal2'>Delete</td><td></td><td></td><td></td></tr>"
+				
 				
 				table.innerHTML += buttons;
 				
