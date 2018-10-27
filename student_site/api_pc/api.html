@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="barger.jpg">
+
+    <title>澳門大學飯堂評分</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="a1.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="a2.css" rel="stylesheet">
+  </head>
+
+  <body>
+	<style>
+		.bg-dark {
+			background-color: #AEA17F!important; 
+		}
+		.container_b{
+			background-image: url("water.jpg");
+		}
+		.container_a{
+			background-image: url("food2.jpg");
+			background-repeat: no-repeat;
+		}
+		p{
+			background-color: transparent;
+		}
+		.abc{
+			color: #FFFFFF!important;
+			text-shadow: 3px 2px blue;
+		}
+		.efg{
+			color: #FFFFFF!important;
+			text-shadow: 3px 2px blue;
+		}
+		.hello{
+			color: #FFFFFF!important;
+
+		}
+	</style>
+	
+	<header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">關於:</h4>
+              <p class="text-muted hello">你可以在這個網站中，幫食物評分，而你的評分會有利於我們改善和分配食物，謝謝</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">+853 8822 8833</a></li>
+                <li><a href="#" class="text-white">地址: 中國澳門氹仔 大學大馬路 澳門大學</a></li>
+                <li><a href="#" class="text-white">Email us: info@umac.mo</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <svg src="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <strong>澳門大學飯堂評分</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+
+      <section class="jumbotron text-center container_a">
+        <div class="container">
+          <h1 class="jumbotron-heading efg">飯堂評分</h1>
+          <p class="lead text-muted abc" >澳門大學</p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">Rate now </a>
+          </p>
+        </div>
+      </section>
+	  
+	 
+
+      <div class="album py-5 bg-light">
+        <div class="container_b">
+
+          <div class="row" id="custom_content">
+		
+<!--
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap" id="poster">
+                <div class="card-body">
+                  <p class="card-text" id="title">This is ________.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">pcms</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+-->
+			
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="a3.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="a4.js"></script>
+    <script src="a5.js"></script>
+    <script src="a6.js"></script>
+	<script>
+		var id = 1;
+		$.ajax({
+			method: 'GET',
+			url:'page_sperate.php',
+			data:{id:id},
+			cache:false
+		}).done(function(response){
+			console.log(response);
+			console.log(response.length);
+			var custom_content = document.getElementById("custom_content");
+			custom_content.innerHTML = "";
+			for (var i = 0; i < response.length; i++) {
+			
+				var html_str = "<div class=\"col-md-4\"><div class=\"card mb-4 shadow-sm\"><img width='200' height='300' src=\"" + response[i].poster + "\" \"><div class=\"card-body\"><p class=\"card-text\">" + response[i].title + "</p><div class=\"d-flex justify-content-between align-items-center\"><div class=\"btn-group\"><button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">View</button><button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">Edit</button></div><small class=\"text-muted\">pcms</small></div></div></div></div>";
+				custom_content.innerHTML += html_str;
+			}
+			//document.getElementById("title").innerHTML= response.title;
+			//document.getElementById("poster").data-src=response.poster;
+			
+		});
+	
+	</script>
+  </body>
+</html>

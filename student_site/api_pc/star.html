@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+</style>
+</head>
+<body>
+
+<h2>Star Rating</h2>
+<span id ="btn_star1"onclick="onclick_star_a(event)"class="fa fa-star a"></span>
+<span id ="btn_star2"onclick="onclick_star_b(event)"class="fa fa-star b"></span>
+<span id ="btn_star3"onclick="onclick_star_c(event)"class="fa fa-star c"></span>
+<span id ="btn_star4"onclick="onclick_star_d(event)"class="fa fa-star d"></span>
+<span id ="btn_star5"onclick="onclick_star_e(event)"class="fa fa-star e"></span>
+<button onclick="onclick_sumit(event)"id="sumit"class="sumit">Sumit</button>
+<script>
+var star1= document.getElementById("btn_star1");
+var star2= document.getElementById("btn_star2");
+var star3= document.getElementById("btn_star3");
+var star4= document.getElementById("btn_star4");
+var star5= document.getElementById("btn_star5");
+var sumit= document.getElementById("sumit");
+function onclick_star_a(event){
+		star1.style["color"]="orange";
+		star2.style["color"]="black";
+		star3.style["color"]="black";
+		star4.style["color"]="black";
+		star5.style["color"]="black";
+}
+function onclick_star_b(event){
+	star1.style["color"]="orange";
+	star2.style["color"]="orange";
+	star3.style["color"]="black";
+	star4.style["color"]="black";
+	star5.style["color"]="black";
+}
+function onclick_star_c(event){
+	star1.style["color"]="orange";
+	star2.style["color"]="orange";
+	star3.style["color"]="orange";
+	star4.style["color"]="black";
+	star5.style["color"]="black";
+}
+function onclick_star_d(event){
+	star1.style["color"]="orange";
+	star2.style["color"]="orange";
+	star3.style["color"]="orange";
+	star4.style["color"]="orange";
+	star5.style["color"]="black";
+}
+function onclick_star_e(event){
+	star1.style["color"]="orange";
+	star2.style["color"]="orange";
+	star3.style["color"]="orange";
+	star4.style["color"]="orange";
+	star5.style["color"]="orange";
+}
+function onclick_sumit(event){
+	$.ajax({
+			method: 'POST',
+			url:'',
+		}).done(function(response){
+			console.log(response);
+		});
+}
+</script>
+</body>
+</html>
