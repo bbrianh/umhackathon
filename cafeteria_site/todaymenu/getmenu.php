@@ -24,6 +24,7 @@ if ($menu->num_rows > 0) {
     // output data of each row
     while($rol = $menu->fetch_assoc()) {
         array_push($response,array(
+		"food_id"=>$rol["id"],
 		"photo"=>$rol["photo"],
 		"name"=>$rol["name"],
 		"ingredient"=>$rol["ingredient"]));

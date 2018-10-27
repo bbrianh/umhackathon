@@ -14,19 +14,19 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql= "select food_id,round(avg(rate)) from rating group by food_id";
+$sql= "select food_id, round(avg(score)) from rating group by food_id";
 
-$scores = $conn->query($sql);
+$rating = $conn->query($sql);
 
 $response=array();
 
-if ($menu->num_rows > 0) {
+if ($rating->num_rows > 0) {
     // output data of each row
-    while($rol = $menu->fetch_assoc()) {
+    while($rol = $rating->fetch_assoc()) {
         array_push($response,array(
-		"photo"=>$rol["photo"],
-		"name"=>$rol["name"],
-		"ingredient"=>$rol["ingredient"]));
+		"food_id"=>$rol["food_id"],
+		"rating"=>$rol["round(avg(score))"]
+		));
 		
     }
 }
