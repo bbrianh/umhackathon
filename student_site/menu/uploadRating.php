@@ -20,6 +20,6 @@ $id = $_GET["id"];
 $sql = "INSERT INTO rating (food_id,score)values ('$id','$score')";
 $conn -> query($sql);
 
-echo("done");
+echo("done".$id.$score);
 
 ?>

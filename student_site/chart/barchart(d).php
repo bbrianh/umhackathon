@@ -4,6 +4,7 @@
        <meta charset="utf-8">
    </head>
    <body style="height: 100%; margin: 0">
+	<div id="title"><h1>UM 2018-10-26 Dinner consumption</h1><a style='float:right' href="../api_pc/index.html">To main page</a></div>
        <div id="container" style="height: 100%"></div>
        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
 	   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>

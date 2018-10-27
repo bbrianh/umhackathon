@@ -117,11 +117,19 @@
         </div>
       </section>
 	  
-		<div class="barchart">
-			<a href="firstpage.html">"<button id="lunchdata"class="buttonBar button_e ">主頁</button></a>
-			<a href="#"><button id="LunchDrinkSon"class="buttonBar button_a">飯堂資料</button></a>
-			<a href="test.html"><button id="rade"class="buttonBar button_b " >飯堂評分</button></a>
-			<button id="people"class="buttonBar button_d">統計人次</button>
+		<div class="barchart" style="text-align:center">
+			<a href="firstpage.html"><button id="lunchdata"class="buttonBar button_a ">主頁</button></a>
+			<a href="index.html"><button id="rade"class="buttonBar button_b " >飯堂評分</button></a>
+			<div class="dropdown" style="display:inline">
+				<button class=" dropdown-toggle buttonBar button_d" type="button" data-toggle="dropdown">統計人次
+					<span class="caret"></span>
+				</button>
+						<ul class="dropdown-menu" style="text-align:center">
+							<li><a href="../chart/barchart(b).php">早餐</a></li>
+							<li><a href="../chart/barchart(l).php">午餐</a></li>
+							<li><a href="../chart/barchart(d).php">晚餐</a></li>
+						</ul>
+			</div>
 
 		</div>
 
@@ -147,9 +155,6 @@
 	<script>
 	var DrinkSon = document.getElementById("LunchDrinkSon");
 	var rade = document.getElementById("rade");
-	function  onclick_button2{
-		
-	}
 	</script>
   </body>
 </html>

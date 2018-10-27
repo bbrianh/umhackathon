@@ -77,6 +77,7 @@
 			color:#FFFFFF;
 		}
 	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<header>
       <div class="collapse bg-dark" id="navbarHeader">
@@ -111,7 +112,7 @@
     </header>
 
     <main role="main">
-      <section class="jumbotron text-center container_a">
+      <section class="jumbotron text-center container_a" style="background-image: url(food.jpg)">
 		<div class="first"></div>
 		<div class="second"></div>
 		<div></div>
@@ -119,36 +120,32 @@
         <div class="container">
           <h1 class="jumbotron-heading efg">飯堂評分</h1>
           <p class="lead text-muted abc" >澳門大學</p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Rate now </a>
-          </p>
         </div>
       </section>
 	  </div>
 	  
-		<div class="barchart">
+		<div class="barchart" style="text-align:center">
+			
 			<a href="firstpage.html">
-				<button id="lunchdata"class="buttonBar button_e" onclick="onclick_button4">主頁</button>
+				<button id="LunchDrinkSon"class="buttonBar button_a"onclick="onclick_button1">主頁</button>
 			</a>
 			
 			<a href="#">
-				<button id="LunchDrinkSon"class="buttonBar button_a"onclick="onclick_button1">飯堂資料</button>
-			</a>
-			
-			<a href="test.html">
 				<button id="rade"class="buttonBar button_b " onclick="onclick_button2">飯堂評分</button>
+				
 			</a>
-					
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle buttonBar button_d" type="button" data-toggle="dropdown">統計人次
+		
+			<div class="dropdown" style="display:inline">
+				<button class=" dropdown-toggle buttonBar button_d" type="button" data-toggle="dropdown">統計人次
 					<span class="caret"></span>
 				</button>
-						<ul class="dropdown-menu">
+						<ul class="dropdown-menu" style="text-align:center">
 							<li><a href="../chart/barchart(b).php">早餐</a></li>
-							<li><a href="../cahrt/barchart(l).php">午餐</a></li>
+							<li><a href="../chart/barchart(l).php">午餐</a></li>
 							<li><a href="../chart/barchart(d).php">晚餐</a></li>
 						</ul>
 			</div>
+			</a>
 
 		</div>
 
@@ -181,6 +178,36 @@
       </div>
 
     </main>
+	
+	 <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" >rate</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+			<span id ="btn_star1"onclick="onclick_star_a(event)"class="fa fa-star a"></span>
+			<span id ="btn_star2"onclick="onclick_star_b(event)"class="fa fa-star b"></span>
+			<span id ="btn_star3"onclick="onclick_star_c(event)"class="fa fa-star c"></span>
+			<span id ="btn_star4"onclick="onclick_star_d(event)"class="fa fa-star d"></span>
+			<span id ="btn_star5"onclick="onclick_star_e(event)"class="fa fa-star e"></span>
+			<button onclick="onclick_sumit(event)"id="sumit"class="sumit">Sumit</button>
+		
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
 
     <footer class="text-muted">
       <div class="container">
@@ -204,6 +231,7 @@
 			url:"../menu/getmenu.php",
 		}).done(function (response){
 			console.log(response);
+			if (response!=null){
 			var text=""
 			for (var i=0;i<response.length;i++){
 				text += "<div class='col-md-4'>";
@@ -211,18 +239,122 @@
 				text += '<img class="card-img-top" src= "../../cafeteria_site/todaymenu/'+response[i]["photo"]+'" alt="Card image cap" id="poster">';
 				text += '<div class="card-body">';
 				text +=	'<p class="card-text">'+response[i]["name"]+'</p>';
+				
+				text += '<span class="fa fa-star a" id=star'+ i +'_1></span>'
+				text += '<span class="fa fa-star a" id=star'+ i +'_2></span>'
+				text += '<span class="fa fa-star a" id=star'+ i +'_3></span>'
+				text += '<span class="fa fa-star a" id=star'+ i +'_4></span>'
+				text += '<span class="fa fa-star a" id=star'+ i +'_5></span>'
+				
 				text += '<div class="d-flex justify-content-between align-items-center">';
 				text += '<div class="btn-group">';
-				text += '<button type="button" class="btn btn-sm btn-outline-secondary">View</button>';
+				text += '<button type="button" class="btn btn-sm btn-outline-secondary" onclick=onclick_goRate(event) data-toggle="modal" data-target="#myModal" id="' + i + '">rate</button>';
 				text += '</div>';
 				text += '<small class="text-muted">ingredient: '+response[i]["ingredient"]+'</small>';
 				text += '</div></div></div></div>';
 			}
 			document.getElementById("custom_content").innerHTML=text;
+			}
 			
-		
+			$.ajax({
+				methos:"GET",
+				url:"../menu/view_rating/getScoreavg.php"	
+			}).done(function(response){
+				console.log(response);
+				
+				if (response!=null){
+					for(var i =0;i<response.length;i++){
+						color_star(i,response[i]["rating"]);
+					}
+				}
+			});
 		});
 		
+		var btnId='';
+		
+		function color_star(card,star){
+			document.getElementById("star"+card+'_1').style["color"]="black";
+			document.getElementById("star"+card+'_2').style["color"]="black";
+			document.getElementById("star"+card+'_3').style["color"]="black";
+			document.getElementById("star"+card+'_4').style["color"]="black";
+			document.getElementById("star"+card+'_5').style["color"]="black";
+			console.log(star);
+			
+			for(var i=1; i<=star; i++){
+				var starno = document.getElementById("star"+card+'_'+i);
+				console.log("star"+card+'_'+i);
+				console.log(starno);
+				starno.style["color"]="orange";
+			}
+		}
+		
+		function onclick_goRate(event){
+			btnId=event.target.id;
+		}
+		
+		function onclick_sumit(event){
+			$.ajax({
+				method:"GET",
+				url:"../menu/uploadRating.php",
+				data:{id:btnId,score:score}
+			}).done(function(response){
+				console.log(response);
+				location.reload();
+			})
+		}
 	</script>
+	
+	
+	<script>
+	var star1= document.getElementById("btn_star1");
+	var star2= document.getElementById("btn_star2");
+	var star3= document.getElementById("btn_star3");
+	var star4= document.getElementById("btn_star4");
+	var star5= document.getElementById("btn_star5");
+	var sumit= document.getElementById("sumit");
+	
+	var score=0;
+	function onclick_star_a(event){
+			star1.style["color"]="orange";
+			star2.style["color"]="black";
+			star3.style["color"]="black";
+			star4.style["color"]="black";
+			star5.style["color"]="black";
+			score=1;
+	}
+	function onclick_star_b(event){
+		star1.style["color"]="orange";
+		star2.style["color"]="orange";
+		star3.style["color"]="black";
+		star4.style["color"]="black";
+		star5.style["color"]="black";
+		score=2;
+	}
+	function onclick_star_c(event){
+		star1.style["color"]="orange";
+		star2.style["color"]="orange";
+		star3.style["color"]="orange";
+		star4.style["color"]="black";
+		star5.style["color"]="black";
+		score=3;
+	}
+	function onclick_star_d(event){
+		star1.style["color"]="orange";
+		star2.style["color"]="orange";
+		star3.style["color"]="orange";
+		star4.style["color"]="orange";
+		star5.style["color"]="black";
+		score=4;
+	}
+	function onclick_star_e(event){
+		star1.style["color"]="orange";
+		star2.style["color"]="orange";
+		star3.style["color"]="orange";
+		star4.style["color"]="orange";
+		star5.style["color"]="orange";
+		score=5;
+	}
+	
+</script>
   </body>
 </html>
